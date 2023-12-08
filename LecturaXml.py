@@ -1,33 +1,40 @@
 import xml.etree.ElementTree as ET
+from listaDobleEnlazada import ListaDoble
+from cancion import Cancion
+
+lista_canciones = ListaDoble()
 
 def Lectura_xml(ruta):
     raiz = ET.parse(ruta).getroot()
 
-    ListaCanciones = [] #Colocar listas TDA
     
-    for canciones in raiz.findall('cancion'):     
-        detalles = [] #Colocar lista TDA
+    for canciones in raiz.findall('cancion'):    
+
+        nuevaCancion = Cancion()
+
         nombreCancion = canciones.get('nombre')
+        nuevaCancion.nombre = nombreCancion
+
         for artistaCancion in canciones.findall('artista'):
             artista = artistaCancion.text
+            nuevaCancion.artista = artista
+
         for albumCancion in canciones.findall('album'):
             album = albumCancion.text
+            nuevaCancion.album = album
+
         for imagenCancion in canciones.findall('imagen'):
             imagen = imagenCancion.text
+            nuevaCancion.imagen = imagen
+            
         for rutaCancion in canciones.findall('ruta'):
             ruta = rutaCancion.text
+            nuevaCancion.ruta = ruta
                    
-        # Realizarlo con TDA
-        detalles.append([artista,album,imagen,ruta])
-        ListaCanciones.append([nombreCancion,detalles])
+        lista_canciones.insertarNodo(nuevaCancion)
+    lista_canciones.recorrer() #Imprime la lista enlazada
 
-    #Imprime la lista de listas
-    # [cancion, [detalles]] => [cancion, [artista, album, imagen, ruta]]
-    for cancion in ListaCanciones:
-        print(cancion[0])
-        for detalles in cancion[1]:
-            print(detalles)
-        print()
+    
 
 if __name__ == "__main__":
     leer_xml = Lectura_xml("Entrada.xml")
