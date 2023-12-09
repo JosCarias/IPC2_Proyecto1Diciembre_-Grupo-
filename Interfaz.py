@@ -51,7 +51,7 @@ Album = ImageTk.PhotoImage(img)
 
 #es la imagen del album
 label = tk.Label(frameReproductor, image=Album, height=250,width=250)
-label.grid(column=0,rowspan=4,row=0,padx=10,pady=10)
+label.grid(column=0,rowspan=5,row=0,padx=10,pady=10)
 
 #carga la ruta de la imagen de play
 playImagen = 'Imgenes\playPequeño.png'
