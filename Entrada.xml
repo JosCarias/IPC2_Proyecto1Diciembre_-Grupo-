@@ -2,43 +2,43 @@
     <cancion nombre = "Cartoon  Made Me Feel ft Kristel Aaslaid Champion Remix">
         <artista>Cartoon</artista>
         <album>Sencillo</album>
-        <imagen>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Cartoon__Made_Me_Feel_ft_Kristel_Aaslaid_Champion_Remix.jpg</imagen>
-        <ruta>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Cartoon__Made_Me_Feel_ft_Kristel_Aaslaid_Champion_Remix.mp3</ruta>
+        <imagen>Albunes\Made Me Feel ft. Kristel Aaslaid (Champion Remix).jpg</imagen>
+        <ruta>Albunes\Made Me Feel ft. Kristel Aaslaid (Champion Remix).mp3</ruta>
     </cancion>
     <cancion nombre = "Cartoon  On  On feat Daniel Levi NCS Release">
         <artista>Cartoon</artista>
         <album>Sencillo</album>
-        <imagen>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Cartoon__On__On_feat_Daniel_Levi_NCS_Release.jpg</imagen>
-        <ruta>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Cartoon__On__On_feat_Daniel_Levi_NCS_Release.mp3</ruta>
+        <imagen>Albunes\Cartoon On On feat Daniel Levi NCS Release.jpg</imagen>
+        <ruta>Albunes\Cartoon On On feat Daniel Levi NCS Release.mp3</ruta>
     </cancion>
     <cancion nombre = "Enemy from the series Arcane League of Legends">
         <artista>Imagine Dragons</artista>
         <album>Sencillo</album>
-        <imagen>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Imagine_Dragons__JID__Enemy_from_the_series_Arcane_League_of_Legends__Official_Music_Video.jpg</imagen>
-        <ruta>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Imagine_Dragons__JID__Enemy_from_the_series_Arcane_League_of_Legends__Official_Music_Video.mp3</ruta>
+        <imagen>Albunes\Enemy from the series Arcane League of Legends.jpg</imagen>
+        <ruta>Albunes\Enemy from the series Arcane League of Legends.mp3</ruta>
     </cancion>
     <cancion nombre = "Graveyar">
         <artista>Healsy</artista>
         <album>Manic</album>
-        <imagen>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Manic.jpg</imagen>
-        <ruta>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Graveyard.mp3</ruta>
+        <imagen>Albunes\Halsey Graveyard.png</imagen>
+        <ruta>Albunes\Halsey Graveyard.mp3</ruta>
     </cancion>
     <cancion nombre = "You should be sad">
         <artista>Healsy</artista>
         <album>Manic</album>
-        <imagen>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Manic.jpg</imagen>
-        <ruta>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\You_should_be_sad.mp3</ruta>
+        <imagen>Albunes\You should be sad.jpeg</imagen>
+        <ruta>Albunes\You should be sad.mp3</ruta>
     </cancion>
     <cancion nombre = "New Americana">
         <artista>Healsy</artista>
         <album>Badlands</album>
-        <imagen>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Badlands.jpg</imagen>
-        <ruta>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Halsey_New_Americana.mp3</ruta>
+        <imagen>Albunes\New Americana.jpeg</imagen>
+        <ruta>Albunes\New Americana.mp3</ruta>
     </cancion>
     <cancion nombre = "Solo a terceros">
         <artista>PXNDX</artista>
         <album>Poetics</album>
-        <imagen>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\Manic.jpg</imagen>
-        <ruta>D:\Documentos\Repositorios IPC2\IPC2_Proyecto1Diciembre_201603028\Musica\PXNDX _Solo_a_Terceros_VIDEO_OFICIAL.mp3</ruta>
+        <imagen>Albunes\Solo a terceros.jpg</imagen>
+        <ruta>Albunes\Solo a terceros.mp3</ruta>
     </cancion>    
 </biblioteca>

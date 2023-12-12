@@ -9,6 +9,7 @@ menu = tk.Tk()
 menu.title("IPCMusic ")
 menu.geometry("720x480") 
 menu.resizable(False, False) 
+menu.config(bg="gray")
 
 # frame donde estan los botones y la barra de busqueda
 frame = tk.Frame(menu, width=700, height=50, bg="lightgrey")
@@ -92,6 +93,15 @@ atras = ImageTk.PhotoImage(img)
 #crea el boton de detener
 btnAtras = tk.Button(frameReproductor,image=atras,font="arial", command="LLamar a la funcion detener", width=60,height=60)
 btnAtras.grid(column=2,row=4,padx=2,pady=2)
+
+#carga la ruta de la imagen de aleatorio
+aleatorioImagen = 'Imgenes/aleatorio.png'
+img = Image.open(aleatorioImagen) 
+aleatorio = ImageTk.PhotoImage(img)
+
+#crea el boton de detener
+btnAtras = tk.Button(frameReproductor,image=aleatorio,font="arial", command="LLamar a la funcion detener", width=60,height=60)
+btnAtras.grid(column=3,row=4,padx=2,pady=2)
 
 #carga la ruta de la imagen de adelante
 adelanteImagen = 'Imgenes/adelante.png'
