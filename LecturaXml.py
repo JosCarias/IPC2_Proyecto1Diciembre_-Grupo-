@@ -7,7 +7,7 @@ lista_canciones = ListaDoble()
 def Lectura_xml(ruta):
     raiz = ET.parse(ruta).getroot()
 
-
+    
     for canciones in raiz.findall('cancion'):    
 
         nuevaCancion = Cancion()
@@ -26,11 +26,11 @@ def Lectura_xml(ruta):
         for imagenCancion in canciones.findall('imagen'):
             imagen = imagenCancion.text
             nuevaCancion.imagen = imagen
-
+            
         for rutaCancion in canciones.findall('ruta'):
             ruta = rutaCancion.text
             nuevaCancion.ruta = ruta
-
+                   
         lista_canciones.insertarNodo(nuevaCancion)
     lista_canciones.recorrer() #Imprime la lista enlazada
 
@@ -45,7 +45,13 @@ def Lectura_xml(ruta):
     cancion = lista_canciones.siguienteCancion() # Pasa a la cancion 6
     print(f"El nombre de la canción es: {cancion}")
 
+    
+    print(f"El total de canciones de la lista es: {lista_canciones.cantidadElementos()}")
+    lista_canciones.BuscarPorIndice(7)
 
+    
+    print(f"Eliminando primera cancion con el nombre de: {lista_canciones.eliminarIndice(6)}")
+    
 
 if __name__ == "__main__":
     leer_xml = Lectura_xml("Entrada.xml")
