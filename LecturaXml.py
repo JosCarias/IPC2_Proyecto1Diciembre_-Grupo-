@@ -46,6 +46,12 @@ def Lectura_xml(ruta):
     print(f"El nombre de la canción es: {cancion}")
 
     
+    print(f"El total de canciones de la lista es: {lista_canciones.cantidadElementos()}")
+    lista_canciones.BuscarPorIndice(7)
+
+    
+    print(f"Eliminando primera cancion con el nombre de: {lista_canciones.eliminarIndice(6)}")
+    
 
 if __name__ == "__main__":
     leer_xml = Lectura_xml("Entrada.xml")
