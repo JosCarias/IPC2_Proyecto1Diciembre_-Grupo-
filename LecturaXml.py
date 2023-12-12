@@ -3,6 +3,8 @@ from listaDobleEnlazada import ListaDoble
 from cancion import Cancion
 
 lista_canciones = ListaDoble()
+lista_album = ListaDoble()
+lista_artista = ListaDoble()
 
 def Lectura_xml(ruta):
     raiz = ET.parse(ruta).getroot()
@@ -32,26 +34,46 @@ def Lectura_xml(ruta):
             nuevaCancion.ruta = ruta
                    
         lista_canciones.insertarNodo(nuevaCancion)
+
+def Menu():
+    print("==========Proyecto1_IPC_2=========="
+          +"\n\t1. Cargar archivo xml"
+          +"\n\t2. Ver todas las canciones"      
+          +"\n\t3. Clasificar por album"
+          +"\n\t4. Clasificar por artistas"
+          +"\n\t5. Salir")
+
+def ImprimirCanciones():
     lista_canciones.recorrer() #Imprime la lista enlazada
 
-    lista_canciones.siguienteCancion() # Pasa a la cancion 2
-    lista_canciones.siguienteCancion() # Pasa a la cancion 3
-    lista_canciones.siguienteCancion() # Pasa a la cancion 4
-    lista_canciones.siguienteCancion() # Pasa a la cancion 5
-    lista_canciones.siguienteCancion() # Pasa a la cancion 6
-    lista_canciones.anteriorCancion() # Regresa a la cancion 5
-    lista_canciones.anteriorCancion() # Regresa a la cancion 4
-    lista_canciones.siguienteCancion() # Pasa a la cancion 5
-    cancion = lista_canciones.siguienteCancion() # Pasa a la cancion 6
-    print(f"El nombre de la canción es: {cancion}")
+def ImprimirPorAlbum(album):
+    if lista_canciones.cantidadElementos()!=0:
+        if lista_canciones.BuscarPorAlbum(album):
+            for i in range(lista_canciones.cantidadElementos()):
+                if album == lista_canciones.BuscarPorIndice(i).album:
+                    lista_album.insertarNodo(lista_canciones.BuscarPorIndice(i))
+                i = i + 1
+            print()
+            lista_album.recorrer()
+        else:
+            print("El album ingresado no existe")
+    else:
+        print("No hay elementos en la lista")
 
-    
-    print(f"El total de canciones de la lista es: {lista_canciones.cantidadElementos()}")
-    lista_canciones.BuscarPorIndice(7)
+def ImprimirPorArtista(artista):
+    if lista_canciones.cantidadElementos()!=0:
+        if lista_canciones.BuscarPorArtista(artista):
+            for i in range(lista_canciones.cantidadElementos()):
+                if artista == lista_canciones.BuscarPorIndice(i).artista:
+                    lista_artista.insertarNodo(lista_canciones.BuscarPorIndice(i))
+                i = i + 1
+            print()
+            lista_artista.recorrer()
+        else:
+            print("El artista ingresado no existe")
+    else:
+        print("No hay elementos en la lista")
 
-    
-    print(f"Eliminando primera cancion con el nombre de: {lista_canciones.eliminarIndice(6)}")
-    
 
 if __name__ == "__main__":
     leer_xml = Lectura_xml("Entrada.xml")
