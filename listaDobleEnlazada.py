@@ -131,3 +131,13 @@ class ListaDoble:
             contador += 1
         print("No existe la posición indicada")
         return None
+    
+    
+    def buscarCancion(self, nombre):
+        if self.primero is None:
+            return
+        actual = self.primero
+        while actual:
+            if actual.node.nombre == nombre:
+                return actual.node
+            actual = actual.siguiente

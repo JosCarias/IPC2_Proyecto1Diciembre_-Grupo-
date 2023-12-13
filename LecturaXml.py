@@ -75,5 +75,15 @@ def ImprimirPorArtista(artista):
         print("No hay elementos en la lista")
 
 
+def Buscar_Cancion(cancion_buscada):
+    cancion = lista_canciones.buscarCancion(cancion_buscada)
+    print('Cancion: ' + cancion.nombre)
+    print('Artista: ' + cancion.artista)
+    print('Album: ' + cancion.album)
+    print('Imagen: ' + cancion.imagen)
+    print('Ruta: ' + cancion.ruta)
+    print('\n')
+
+
 if __name__ == "__main__":
     leer_xml = Lectura_xml("Entrada.xml")
