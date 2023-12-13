@@ -26,26 +26,20 @@ class ListaDoble:
                 print('Album: ' + actual.node.album)
                 print('Imagen: ' + actual.node.imagen)
                 print('Ruta: ' + actual.node.ruta)
-                print('\n')
+                print('\n') 
                 actual = actual.siguiente
         else:
             print('La lista está vacía\n')
     
     def siguienteCancion(self):
-        if self.Cursor != None and self.Cursor.siguiente != None:
+        if self.Cursor and self.Cursor.siguiente:
             self.Cursor = self.Cursor.siguiente
-            return self.Cursor.node.nombre
-        elif self.Cursor != None and self.Cursor.siguiente == None:
-            self.Cursor = self.Cursor
-            return self.Cursor.node.nombre
+        return self.Cursor.node if self.Cursor else None
 
     def anteriorCancion(self):
-        if self.Cursor != None and self.Cursor.anterior != None:
+        if self.Cursor and self.Cursor.anterior:
             self.Cursor = self.Cursor.anterior
-            return self.Cursor.node.nombre
-        elif self.Cursor != None and self.Cursor.anterior == None:
-            self.Cursor = self.Cursor
-            return self.Cursor.node.nombre
+        return self.Cursor.node if self.Cursor else None
         
     def cantidadElementos(self):
         contador = 0

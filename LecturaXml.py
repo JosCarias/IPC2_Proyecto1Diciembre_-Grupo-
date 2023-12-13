@@ -45,6 +45,7 @@ def Menu():
 
 def ImprimirCanciones():
     lista_canciones.recorrer() #Imprime la lista enlazada
+    
 
 def ImprimirPorAlbum(album):
     if lista_canciones.cantidadElementos()!=0:
@@ -87,3 +88,4 @@ def Buscar_Cancion(cancion_buscada):
 
 if __name__ == "__main__":
     leer_xml = Lectura_xml("Entrada.xml")
+    

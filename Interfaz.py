@@ -1,9 +1,13 @@
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk
+from LecturaXml import *
 
 # Crear la menu principal
 menu = tk.Tk()
+rutaDeXml=""
+
+
 
 # Establecer título y tamaño de la menu
 menu.title("IPCMusic ")
@@ -17,8 +21,22 @@ frame.grid(column=0,row=0,padx=10, pady=10,)
 
 # funcion para buscar el archivo usando windows
 def open_file_dialog():
-    file_path = filedialog.askopenfilename()
-    print("Archivo seleccionado:", file_path)
+    global ruta
+    archivo = filedialog.askopenfile(filetypes=[("Archivos de texto", "*.xml"), ("Todos los archivos", "*.*")])
+    
+    if archivo:
+        ruta=archivo.name 
+        Lectura_xml(ruta)
+        lista_canciones.recorrer()
+        txtBuscar.delete('1.0', tk.END)
+        txtBuscar.insert(tk.END, (str(textoDeInformacion(0))))
+        
+#Funcion para dar formato a la infomacion
+def textoDeInformacion(indice):
+    salida="Nombre: "+lista_canciones.BuscarPorIndice(indice).nombre+"\n"
+    salida+="Artista: "+lista_canciones.BuscarPorIndice(indice).artista+"\n"
+    salida+="Album: "+lista_canciones.BuscarPorIndice(indice).album+"\n"
+    return salida
 
 # boton para cargar el archivo 
 btnArchivo = tk.Button(frame, text="Abrir Archivo",font="arial", command=open_file_dialog)
@@ -82,7 +100,7 @@ btnDetener = tk.Button(frameReproductor,image=detener,font="arial", command="LLa
 btnDetener.grid(column=4,row=0,padx=2,pady=2)
 
 #textbox para informacion
-txtBuscar = tk.Text(frameReproductor, width=45, height=10, state='disabled')
+txtBuscar = tk.Text(frameReproductor, width=45, height=10)
 txtBuscar.grid(column=1,columnspan=5,row=1,rowspan=3,padx=10,pady=5)
 
 #carga la ruta de la imagen de atras
@@ -90,8 +108,20 @@ atrasImagen = 'Imgenes/atras.png'
 img = Image.open(atrasImagen) 
 atras = ImageTk.PhotoImage(img)
 
-#crea el boton de detener
-btnAtras = tk.Button(frameReproductor,image=atras,font="arial", command="LLamar a la funcion detener", width=60,height=60)
+#Funcion para adelantar cancion
+def atrasarCancion():
+    txtBuscar.delete('1.0', tk.END)
+    txtBuscar.insert(tk.END, (str(formatoAtrasar())))
+    
+def formatoAtrasar():
+    datos=lista_canciones.anteriorCancion()
+    salida="Nombre: "+datos.nombre+"\n"
+    salida+="Artista: "+datos.artista+"\n"
+    salida+="Album: "+datos.album+"\n"
+    return salida    
+
+#crea el boton de atras
+btnAtras = tk.Button(frameReproductor,image=atras,font="arial", command=atrasarCancion, width=60,height=60)
 btnAtras.grid(column=2,row=4,padx=2,pady=2)
 
 #carga la ruta de la imagen de aleatorio
@@ -99,18 +129,31 @@ aleatorioImagen = 'Imgenes/aleatorio.png'
 img = Image.open(aleatorioImagen) 
 aleatorio = ImageTk.PhotoImage(img)
 
-#crea el boton de detener
-btnAtras = tk.Button(frameReproductor,image=aleatorio,font="arial", command="LLamar a la funcion detener", width=60,height=60)
-btnAtras.grid(column=3,row=4,padx=2,pady=2)
+#crea el boton de aleatorio
+btnAleatorio = tk.Button(frameReproductor,image=aleatorio,font="arial", command="LLamar a la funcion detener", width=60,height=60)
+btnAleatorio.grid(column=3,row=4,padx=2,pady=2)
 
 #carga la ruta de la imagen de adelante
 adelanteImagen = 'Imgenes/adelante.png'
 img = Image.open(adelanteImagen) 
 adelante = ImageTk.PhotoImage(img)
 
+#Funcion para adelantar cancion
+def adelantarCancion():
+    txtBuscar.delete('1.0', tk.END)
+    txtBuscar.insert(tk.END, (str(formatoAdelantar())))
+    
+def formatoAdelantar():
+    datos=lista_canciones.siguienteCancion()
+    salida="Nombre: "+datos.nombre+"\n"
+    salida+="Artista: "+datos.artista+"\n"
+    salida+="Album: "+datos.album+"\n"
+    return salida
+
 #crea el boton de adelante
-btnAdelante = tk.Button(frameReproductor,image=adelante,font="arial", command="LLamar a la funcion detener", width=60,height=60)
+btnAdelante = tk.Button(frameReproductor,image=adelante,font="arial", command=adelantarCancion, width=60,height=60)
 btnAdelante.grid(column=4,row=4,padx=2,pady=2)
+
 
 # Mostrar la menu
 menu.mainloop()
