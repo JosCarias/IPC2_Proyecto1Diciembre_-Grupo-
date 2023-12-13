@@ -1,3 +1,4 @@
+import random
 from nodo import Nodo
 
 class ListaDoble:
@@ -42,7 +43,13 @@ class ListaDoble:
     def anteriorCancion(self):
         if self.Cursor and self.Cursor.anterior:
             self.Cursor = self.Cursor.anterior
-        return self.Cursor.node 
+        return self.Cursor.node
+
+    def aleatorioCancion(self):
+        if self.Cursor:
+            indice = random.randint(0, int(self.cantidadElementos())-1)
+            self.Cursor = self.BuscarPorIndice(indice)
+        return self.Cursor
         
     def cantidadElementos(self):
         contador = 0
