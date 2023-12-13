@@ -15,6 +15,7 @@ class ListaDoble:
             actual = self.ultimo
             self.ultimo = actual.siguiente = Nodo(node)
             self.ultimo.anterior = actual
+        self .__unir_nodos()
 
     
     def recorrer(self):
@@ -28,18 +29,20 @@ class ListaDoble:
                 print('Ruta: ' + actual.node.ruta)
                 print('\n') 
                 actual = actual.siguiente
+                if actual == self.primero:
+                    break
         else:
             print('La lista está vacía\n')
     
     def siguienteCancion(self):
         if self.Cursor and self.Cursor.siguiente:
             self.Cursor = self.Cursor.siguiente
-        return self.Cursor.node if self.Cursor else None
+        return self.Cursor.node 
 
     def anteriorCancion(self):
         if self.Cursor and self.Cursor.anterior:
             self.Cursor = self.Cursor.anterior
-        return self.Cursor.node if self.Cursor else None
+        return self.Cursor.node 
         
     def cantidadElementos(self):
         contador = 0
@@ -48,8 +51,8 @@ class ListaDoble:
             while aux != None:
                 contador = contador + 1
                 aux = aux.siguiente
-            return contador
-        return contador
+                if aux == self.primero:
+                    return contador
 
     def BuscarPorIndice(self, indice):
         contador = 0
@@ -58,8 +61,11 @@ class ListaDoble:
             while aux != None:
                 if contador == indice:
                     return aux.node
-                aux = aux.siguiente
-                contador = contador + 1
+                else:
+                    aux = aux.siguiente
+                    contador = contador + 1
+                    if aux == self.primero:
+                        return None
         return None
     
     def BuscarPorAlbum(self, album):
@@ -68,7 +74,10 @@ class ListaDoble:
             while aux != None:
                 if aux.node.album == album:
                     return True
-                aux = aux.siguiente
+                else:
+                    aux = aux.siguiente
+                    if aux == self.primero:
+                        return False
         return False
     
     def BuscarPorArtista(self, artista):
@@ -77,55 +86,11 @@ class ListaDoble:
             while aux != None:
                 if aux.node.artista == artista:
                     return True
-                aux = aux.siguiente
+                else:
+                    aux = aux.siguiente
+                    if aux == self.primero:
+                        return False
         return False
-
-    def eliminarPrimero(self):
-        if self.primero != None:
-            if self.primero.siguiente == None:
-                Aux = self.primero
-                self.primero = None
-                self.Final = None
-                return Aux.node
-            else:
-                Aux = self.primero
-                self.primero = self.primero.siguiente
-                self.primero.anterior = None
-                Aux.siguiente = None
-                return Aux.node
-
-    def eliminarIndice(self, indice):
-        if self.primero == None:
-            print("La lista está vacía")
-            return None
-        if indice == 0:
-            aux = self.eliminarPrimero()
-            return aux
-        if indice < 0:
-            print("No existen posiciones menores que cero")
-            return None
-        contador = 0
-        previo = None
-        aux = self.primero
-        while aux != None:
-            if contador == indice:
-                if aux == self.ultimo:
-                    self.ultimo = previo
-                    aux.anterior = None
-                    previo.siguiente = None
-                    return aux.node
-                previo.siguiente=aux.siguiente
-                posterior = aux.siguiente
-                aux.siguiente=None
-                posterior.anterior = aux.anterior
-                aux.anterior=None
-                return aux.node
-            previo = aux
-            aux = aux.siguiente
-            contador += 1
-        print("No existe la posición indicada")
-        return None
-    
     
     def buscarCancion(self, nombre):
         if self.primero is None:
@@ -134,4 +99,12 @@ class ListaDoble:
         while actual:
             if actual.node.nombre == nombre:
                 return actual.node
-            actual = actual.siguiente
+            else:
+                actual = actual.siguiente
+                if actual == self.primero:
+                    return
+
+    def __unir_nodos(self):
+        if self.primero!=None:
+            self.primero.anterior=self.ultimo
+            self.ultimo.siguiente=self.primero
