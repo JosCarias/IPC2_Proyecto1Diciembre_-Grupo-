@@ -129,8 +129,10 @@ aleatorioImagen = 'Imgenes/aleatorio.png'
 img = Image.open(aleatorioImagen) 
 aleatorio = ImageTk.PhotoImage(img)
 
+def aleatorioCancion():
+    lista_canciones.aleatorioCancion()
 #crea el boton de aleatorio
-btnAleatorio = tk.Button(frameReproductor,image=aleatorio,font="arial", command="LLamar a la funcion detener", width=60,height=60)
+btnAleatorio = tk.Button(frameReproductor,image=aleatorio,font="arial", command=aleatorioCancion, width=60,height=60)
 btnAleatorio.grid(column=3,row=4,padx=2,pady=2)
 
 #carga la ruta de la imagen de adelante
