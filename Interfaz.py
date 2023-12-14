@@ -7,8 +7,6 @@ from LecturaXml import *
 menu = tk.Tk()
 rutaDeXml=""
 
-
-
 # Establecer título y tamaño de la menu
 menu.title("IPCMusic ")
 menu.geometry("720x480") 
@@ -47,16 +45,30 @@ btnReporte = tk.Button(frame, text="Reporte",font="arial", command="LLamar a la 
 btnReporte.grid(column=1,row=0,padx=5,pady=5)
 
 #textbox para buscar
-txtBuscar = tk.Text(frame, width=57, height=2)
-txtBuscar.grid(column=3,row=0,padx=5,pady=5)
+txtBarra = tk.Text(frame, width=57, height=2)
+txtBarra.grid(column=3,row=0,padx=5,pady=5)
 
 #carga la ruta de la imagen de adelante
 buscarImagen = 'Imgenes/buscar.png'
 img = Image.open(buscarImagen) 
 buscar = ImageTk.PhotoImage(img)
 
+#Funcion para buscar cancion por nombre
+def buscarPorCancion():
+    txtBuscar.delete('1.0', tk.END)
+    txtBuscar.insert(tk.END, (formatoBuscarCancion(txtBarra.get("1.0", "end-1c"))))
+
+#funcion encargada de dar formato a la informacion de salida      
+def formatoBuscarCancion(nombre):
+    datos=lista_canciones.buscarCancion(nombre)
+    salida="Nombre: "+datos.nombre+"\n"
+    salida+="Artista: "+datos.artista+"\n"
+    salida+="Album: "+datos.album+"\n"
+    return salida
+    
+
 #boton para generar el buscar
-btnBuscar = tk.Button(frame, image=buscar,text="Reporte",font="arial", command="LLamar a la funcion buscar")
+btnBuscar = tk.Button(frame, image=buscar,text="Reporte",font="arial", command=buscarPorCancion)
 btnBuscar.grid(column=4,row=0,padx=5,pady=5)
 
 #frame de abajo, contiene las imagnes y los botones
@@ -112,7 +124,8 @@ atras = ImageTk.PhotoImage(img)
 def atrasarCancion():
     txtBuscar.delete('1.0', tk.END)
     txtBuscar.insert(tk.END, (str(formatoAtrasar())))
-    
+
+#funcion encargada de dar formato a la informacion de salida      
 def formatoAtrasar():
     datos=lista_canciones.anteriorCancion()
     salida="Nombre: "+datos.nombre+"\n"
@@ -129,8 +142,22 @@ aleatorioImagen = 'Imgenes/aleatorio.png'
 img = Image.open(aleatorioImagen) 
 aleatorio = ImageTk.PhotoImage(img)
 
+
+#Funcion para cancion aleatoria
+def cancionAleatoria():
+    txtBuscar.delete('1.0', tk.END)
+    txtBuscar.insert(tk.END, (str(formatoAleatorio())))
+    
+#funcion encargada de dar formato a la informacion de salida      
+def formatoAleatorio():
+    datos=lista_canciones.aleatorioCancion()
+    salida="Nombre: "+datos.nombre+"\n"
+    salida+="Artista: "+datos.artista+"\n"
+    salida+="Album: "+datos.album+"\n"
+    return salida
+
 #crea el boton de aleatorio
-btnAleatorio = tk.Button(frameReproductor,image=aleatorio,font="arial", command="LLamar a la funcion detener", width=60,height=60)
+btnAleatorio = tk.Button(frameReproductor,image=aleatorio,font="arial", command=cancionAleatoria, width=60,height=60)
 btnAleatorio.grid(column=3,row=4,padx=2,pady=2)
 
 #carga la ruta de la imagen de adelante
@@ -142,7 +169,8 @@ adelante = ImageTk.PhotoImage(img)
 def adelantarCancion():
     txtBuscar.delete('1.0', tk.END)
     txtBuscar.insert(tk.END, (str(formatoAdelantar())))
-    
+       
+#funcion encargada de dar formato a la informacion de salida  
 def formatoAdelantar():
     datos=lista_canciones.siguienteCancion()
     salida="Nombre: "+datos.nombre+"\n"

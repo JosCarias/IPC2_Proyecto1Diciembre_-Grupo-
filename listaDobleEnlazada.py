@@ -49,7 +49,7 @@ class ListaDoble:
         if self.Cursor:
             indice = random.randint(0, int(self.cantidadElementos())-1)
             self.Cursor = self.BuscarPorIndice(indice)
-        return self.Cursor
+        return self.Cursor 
         
     def cantidadElementos(self):
         contador = 0
@@ -64,16 +64,10 @@ class ListaDoble:
     def BuscarPorIndice(self, indice):
         contador = 0
         aux = self.primero
-        if aux != None:
-            while aux != None:
-                if contador == indice:
-                    return aux.node
-                else:
-                    aux = aux.siguiente
-                    contador = contador + 1
-                    if aux == self.primero:
-                        return None
-        return None
+        while aux and contador != indice:
+            aux = aux.siguiente
+            contador += 1
+        return aux.node if aux else None
     
     def BuscarPorAlbum(self, album):
         aux = self.primero
