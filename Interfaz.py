@@ -143,18 +143,9 @@ img = Image.open(aleatorioImagen)
 aleatorio = ImageTk.PhotoImage(img)
 
 
-#Funcion para cancion aleatoria
+#Avtiva la funcion de cancion aleatoria
 def cancionAleatoria():
-    txtBuscar.delete('1.0', tk.END)
-    txtBuscar.insert(tk.END, (str(formatoAleatorio())))
-    
-#funcion encargada de dar formato a la informacion de salida      
-def formatoAleatorio():
-    datos=lista_canciones.aleatorioCancion()
-    salida="Nombre: "+datos.nombre+"\n"
-    salida+="Artista: "+datos.artista+"\n"
-    salida+="Album: "+datos.album+"\n"
-    return salida
+    lista_canciones.aleatorioCancion()
 
 #crea el boton de aleatorio
 btnAleatorio = tk.Button(frameReproductor,image=aleatorio,font="arial", command=cancionAleatoria, width=60,height=60)
