@@ -77,6 +77,7 @@ class ListaDoble:
             indice = random.randint(0, int(self.cantidadElementos())-1)
             self.Cursor = self.BuscaNodo(indice)
             cancion = self.Cursor.node
+        cancion.CantidadReproducciones = int(cancion.CantidadReproducciones)+1 # Contador de número de reproducciones
         return cancion
 
     def anteriorCancion(self):
@@ -87,6 +88,7 @@ class ListaDoble:
             indice = random.randint(0, int(self.cantidadElementos())-1)
             self.Cursor = self.BuscaNodo(indice)
             cancion = self.Cursor.node
+        cancion.CantidadReproducciones = int(cancion.CantidadReproducciones)+1 # Contador de número de reproducciones
         return cancion
 
     def aleatorioCancion(self):

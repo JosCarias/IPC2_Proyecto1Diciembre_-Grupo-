@@ -37,6 +37,10 @@ def Lectura_xml(ruta):
                    
         lista_canciones.insertarNodo(nuevaCancion)
 
+def NumeroReproduccionesCancion(nombreCancion):
+    cancion = lista_canciones.buscar_por_nombre(nombreCancion)
+    print(f'La conción: {cancion.nombre} tiene: {cancion.CantidadReproducciones} reproducciones')  
+
 def Menu():
     print("==========Proyecto1_IPC_2=========="
           +"\n\t1. Cargar archivo xml"
