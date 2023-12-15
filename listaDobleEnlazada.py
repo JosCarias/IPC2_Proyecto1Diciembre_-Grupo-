@@ -137,3 +137,5 @@ class ListaDoble:
         if self.primero!=None:
             self.primero.anterior=self.ultimo
             self.ultimo.siguiente=self.primero
+
+    

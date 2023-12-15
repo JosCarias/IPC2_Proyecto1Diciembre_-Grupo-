@@ -1,10 +1,12 @@
 import xml.etree.ElementTree as ET
 from listaDobleEnlazada import ListaDoble
 from cancion import Cancion
+from playlist import Playlist
 
 lista_canciones = ListaDoble()
 lista_album = ListaDoble()
 lista_artista = ListaDoble()
+lista_playlists = ListaDoble()
 
 def Lectura_xml(ruta):
     raiz = ET.parse(ruta).getroot()
@@ -84,6 +86,15 @@ def Buscar_Cancion(cancion_buscada):
     print('Imagen: ' + cancion.imagen)
     print('Ruta: ' + cancion.ruta)
     print('\n')
+
+
+def crear_playlist(nombre):
+    nueva_playlist = Playlist()
+    nueva_playlist.nombre = nombre
+    cancion = input('Ingrese el nombre de la cancion que desea agregar a la playlist')
+    cancion_encontrada = Buscar_Cancion(cancion)
+    nueva_playlist.canciones.insertarNodo(cancion_encontrada)
+    
 
 
 if __name__ == "__main__":
