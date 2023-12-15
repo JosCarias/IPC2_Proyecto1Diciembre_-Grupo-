@@ -4,7 +4,7 @@ from LecturaXml import *
 def Principal():
     Menu()
     opcion = int(input ("\nIngrese el número de la acción que desea realizar:\n"))
-    while 1<= opcion and opcion <=8:        
+    while 1<= opcion and opcion <=9:        
         if opcion == 1:
             Lectura_xml("Entrada.xml")
         elif opcion == 2:
@@ -25,6 +25,9 @@ def Principal():
         elif opcion == 7:
             ver_playlist()
         elif opcion == 8:
+            nombreCancion = input('Ingrese el nombre de la canción:\n')
+            NumeroReproduccionesCancion(nombreCancion)
+        elif opcion == 9:
             print("A salido del menú")
             break  
         Menu()    

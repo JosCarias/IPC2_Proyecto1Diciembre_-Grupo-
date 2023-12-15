@@ -39,7 +39,10 @@ def Lectura_xml(ruta):
 
 def NumeroReproduccionesCancion(nombreCancion):
     cancion = lista_canciones.buscar_por_nombre(nombreCancion)
-    print(f'La conción: {cancion.nombre} tiene: {cancion.CantidadReproducciones} reproducciones')  
+    if cancion:
+        print(f'La canción: {cancion.nombre} tiene: {cancion.CantidadReproducciones} reproducciones') 
+    else:
+        print('La cancion no existe') 
 
 def Menu():
     print("==========Proyecto1_IPC_2=========="
@@ -50,7 +53,8 @@ def Menu():
           +"\n\t5. Crear playlist"
           +"\n\t6. Agregar canciones a la playlist"
           +"\n\t7. ver playlist"
-          +"\n\t8. Salir")
+          +"\n\t8. ver cantidad de reproducciones de una canción"
+          +"\n\t9. Salir")
 
 def ImprimirCanciones():
     lista_canciones.recorrer() #Imprime la lista enlazada
