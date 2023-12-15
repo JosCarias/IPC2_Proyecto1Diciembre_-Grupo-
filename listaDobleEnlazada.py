@@ -36,6 +36,24 @@ class ListaDoble:
         else:
             print('La lista está vacía\n')
     
+
+    def recorrer_playlist(self):
+        actual = self.primero
+        while actual:
+            print('Nombre de playlist: ' + actual.node.nombre)
+            print('Canciones: ')
+            aux = actual.node.canciones.primero
+            while aux:
+                print(aux.node.nombre)
+                aux = aux.siguiente
+                if aux == actual.node.canciones.primero:
+                    break
+            actual = actual.siguiente
+            print('\n') 
+            if actual == self.primero:
+                break
+
+    
     # Esta funcion sirve para la función aleatorio
     def BuscaNodo(self, indice):
         contador = 0
@@ -123,7 +141,7 @@ class ListaDoble:
                         return False
         return False
     
-    def buscarCancion(self, nombre):
+    def buscar_por_nombre(self, nombre):
         if self.primero is None:
             return
         actual = self.primero

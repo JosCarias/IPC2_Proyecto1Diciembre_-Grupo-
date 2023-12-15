@@ -43,7 +43,10 @@ def Menu():
           +"\n\t2. Ver todas las canciones"      
           +"\n\t3. Clasificar por album"
           +"\n\t4. Clasificar por artistas"
-          +"\n\t5. Salir")
+          +"\n\t5. Crear playlist"
+          +"\n\t6. Agregar canciones a la playlist"
+          +"\n\t7. ver playlist"
+          +"\n\t8. Salir")
 
 def ImprimirCanciones():
     lista_canciones.recorrer() #Imprime la lista enlazada
@@ -79,7 +82,7 @@ def ImprimirPorArtista(artista):
 
 
 def Buscar_Cancion(cancion_buscada):
-    cancion = lista_canciones.buscarCancion(cancion_buscada)
+    cancion = lista_canciones.buscar_por_nombre(cancion_buscada)
     print('Cancion: ' + cancion.nombre)
     print('Artista: ' + cancion.artista)
     print('Album: ' + cancion.album)
@@ -88,13 +91,28 @@ def Buscar_Cancion(cancion_buscada):
     print('\n')
 
 
+def agregar_cancion_playlist(nombre_playlist, cancion):
+    global lista_playlists
+    global lista_canciones
+
+    playlist = lista_playlists.buscar_por_nombre(nombre_playlist)
+    cancion_encontrada = lista_canciones.buscar_por_nombre(cancion)
+
+    playlist.canciones.insertarNodo(cancion_encontrada)
+    
+
+
 def crear_playlist(nombre):
+    global lista_playlists
+
     nueva_playlist = Playlist()
     nueva_playlist.nombre = nombre
-    cancion = input('Ingrese el nombre de la cancion que desea agregar a la playlist')
-    cancion_encontrada = Buscar_Cancion(cancion)
-    nueva_playlist.canciones.insertarNodo(cancion_encontrada)
+
+    lista_playlists.insertarNodo(nueva_playlist)
     
+
+def ver_playlist():
+    lista_playlists.recorrer_playlist()
 
 
 if __name__ == "__main__":
