@@ -78,6 +78,8 @@ class ListaDoble:
         else:
             self.bandera = True
             print('He salido de aleatorio')
+        return 
+        
         
     def cantidadElementos(self):
         contador = 0
