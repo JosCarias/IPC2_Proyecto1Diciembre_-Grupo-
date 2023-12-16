@@ -20,7 +20,14 @@ class ListaDoble:
             self.ultimo.anterior = actual
         self .__unir_nodos()
 
-    
+    # Verifica la existencia de elemntos en una lista
+    def verificador(self):
+        actual = self.primero
+        if self.primero != None:
+            return True
+        else:
+            return False
+        
     def recorrer(self):
         actual = self.primero
         if self.primero != None:

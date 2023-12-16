@@ -6,16 +6,17 @@ def reporte_HTML():
     numeroListas = int(lista_playlists.cantidadElementos())
     if numeroListas > 0:
         for i in range(numeroListas):
-            numeroCanciones = int(lista_playlists.BuscarPorIndice(i).canciones.cantidadElementos())
-            if numeroCanciones > 0:
-                for j in range(numeroCanciones):
-                    nombreLista = ver_Nombe_Lista_Posicion(i)
-                    nombreCancion = cancionPorPosicionEnLista(i,j).nombre
-                    nombreArtista = cancionPorPosicionEnLista(i,j).artista
-                    nombreAlbum = cancionPorPosicionEnLista(i,j).album
-                    reproducido = cancionPorPosicionEnLista(i,j).CantidadReproducciones
-                    cargarDatos(nombreLista, nombreCancion, nombreArtista, nombreAlbum, reproducido)
-                    j+=1
+            if lista_playlists.BuscarPorIndice(i).canciones.verificador() == True:
+                numeroCanciones = int(lista_playlists.BuscarPorIndice(i).canciones.cantidadElementos())
+                if numeroCanciones > 0:
+                    for j in range(numeroCanciones):
+                        nombreLista = ver_Nombe_Lista_Posicion(i)
+                        nombreCancion = cancionPorPosicionEnLista(i,j).nombre
+                        nombreArtista = cancionPorPosicionEnLista(i,j).artista
+                        nombreAlbum = cancionPorPosicionEnLista(i,j).album
+                        reproducido = cancionPorPosicionEnLista(i,j).CantidadReproducciones
+                        cargarDatos(nombreLista, nombreCancion, nombreArtista, nombreAlbum, reproducido)
+                        j+=1
             i+=1
                     
 
