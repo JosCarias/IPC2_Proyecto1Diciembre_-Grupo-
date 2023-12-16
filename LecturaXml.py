@@ -56,7 +56,8 @@ def Menu():
           +"\n\t8. ver cantidad de reproducciones de una canción"
           +"\n\t9. ver una lista segun posicion"
           +"\n\t10. ver una cancion en una lista segun posicion"
-          +"\n\t11. Salir")
+          +"\n\t11. reporte de HTML"
+          +"\n\t12. Salir")
 
 def ImprimirCanciones():
     lista_canciones.recorrer() #Imprime la lista enlazada
@@ -136,7 +137,9 @@ def cancionPorPosicionEnLista(indiceLista, indiceCancion):
     cancion_En_Lista = Lista.canciones.BuscarPorIndice(indiceCancion)
     return cancion_En_Lista
 
-
+def ver_Nombe_Lista_Posicion(indice):
+    nombre = lista_playlists.BuscarPorIndice(indice).nombre
+    return nombre
 
 if __name__ == "__main__":
     leer_xml = Lectura_xml("Entrada.xml")

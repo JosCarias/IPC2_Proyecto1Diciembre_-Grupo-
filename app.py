@@ -1,10 +1,11 @@
 from LecturaXml import *
+from reporte import reporte_HTML
 
     
 def Principal():
     Menu()
     opcion = int(input ("\nIngrese el número de la acción que desea realizar:\n"))
-    while 1<= opcion and opcion <=11:        
+    while 1<= opcion and opcion <=12:        
         if opcion == 1:
             Lectura_xml("Entrada.xml")
         elif opcion == 2:
@@ -39,6 +40,8 @@ def Principal():
             print(f'Artista: {cancion.artista}')
             print(f'Número de reproducciones: {cancion.CantidadReproducciones}')
         elif opcion == 11:
+            reporte_HTML()
+        elif opcion == 12:
             print("A salido del menú")
             break  
         Menu()    
