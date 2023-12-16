@@ -54,7 +54,9 @@ def Menu():
           +"\n\t6. Agregar canciones a la playlist"
           +"\n\t7. ver playlist"
           +"\n\t8. ver cantidad de reproducciones de una canción"
-          +"\n\t9. Salir")
+          +"\n\t9. ver una lista segun posicion"
+          +"\n\t10. ver una cancion en una lista segun posicion"
+          +"\n\t11. Salir")
 
 def ImprimirCanciones():
     lista_canciones.recorrer() #Imprime la lista enlazada
@@ -121,6 +123,19 @@ def crear_playlist(nombre):
 
 def ver_playlist():
     lista_playlists.recorrer_playlist()
+
+def ver_unaLista_Posicion(indice):
+    print(lista_playlists.BuscarPorIndice(indice).nombre)
+    lista_playlists.BuscarPorIndice(indice).canciones.recorrer()
+    print('\n')
+
+
+# Devuelve el nodo de la cancion 
+def cancionPorPosicionEnLista(indiceLista, indiceCancion):
+    Lista = lista_playlists.BuscarPorIndice(indiceLista)
+    cancion_En_Lista = Lista.canciones.BuscarPorIndice(indiceCancion)
+    return cancion_En_Lista
+
 
 
 if __name__ == "__main__":
