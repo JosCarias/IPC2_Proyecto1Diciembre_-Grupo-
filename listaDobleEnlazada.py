@@ -13,7 +13,7 @@ class ListaDoble:
     def insertarNodo(self, node):
         if self.primero is None:
             self.primero = self.ultimo = self.Cursor = Nodo(node)
-            self.Cursor.node.CantidadReproducciones = 1 # Cuenta la primera cancion que se repoduce
+            # self.Cursor.node.CantidadReproducciones = 1 # Cuenta la primera cancion que se repoduce
         else: 
             actual = self.ultimo
             self.ultimo = actual.siguiente = Nodo(node)
