@@ -120,10 +120,11 @@ def crear_playlist(nombre):
     nueva_playlist.nombre = nombre
 
     lista_playlists.insertarNodo(nueva_playlist)
-    
+     
 
 def ver_playlist():
-    lista_playlists.recorrer_playlist()
+    return lista_playlists.recorrer_playlist()
+    
 
 def ver_unaLista_Posicion(indice):
     print(lista_playlists.BuscarPorIndice(indice).nombre)

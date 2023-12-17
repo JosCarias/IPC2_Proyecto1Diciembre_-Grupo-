@@ -47,19 +47,23 @@ class ListaDoble:
 
     def recorrer_playlist(self):
         actual = self.primero
+        salida=""
         while actual:
             print('Nombre de playlist: ' + actual.node.nombre)
             print('Canciones: ')
             aux = actual.node.canciones.primero
+            salida+="-"+str(actual.node.nombre)+"\n"
             while aux:
                 print(aux.node.nombre)
                 aux = aux.siguiente
+                salida+=str(aux.node.nombre)+"\n"
                 if aux == actual.node.canciones.primero:
                     break
             actual = actual.siguiente
             print('\n') 
             if actual == self.primero:
                 break
+        return salida
 
     
     # Esta funcion sirve para la función aleatorio
@@ -152,16 +156,19 @@ class ListaDoble:
         return False
     
     def buscar_por_nombre(self, nombre):
-        if self.primero is None:
-            return
-        actual = self.primero
+        if self.primero is None:  # Verificar si la lista está vacía
+            return None
+    
+        actual = self.primero  # Empezar desde el primer nodo
         while actual:
-            if actual.node.nombre == nombre:
-                return actual.node
-            else:
-                actual = actual.siguiente
-                if actual == self.primero:
-                    return
+            if actual.node.nombre == nombre:  # Verificar si el nombre coincide
+                return actual.node  # Devolver el nodo si se encuentra el nombre
+    
+            actual = actual.siguiente  # Moverse al siguiente nodo
+            if actual == self.primero:  # Si volvemos al inicio, hemos recorrido toda la lista
+                break  # Romper el bucle para evitar un bucle infinito si no se encuentra el nombre
+            
+        return None
 
     def __unir_nodos(self):
         if self.primero!=None:

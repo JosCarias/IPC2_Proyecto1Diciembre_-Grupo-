@@ -43,10 +43,13 @@ def menuPrincipal():
 
     #funcion encargada de dar formato a la informacion de salida      
     def formatoBuscarCancion(nombre):
-        datos=lista_canciones.buscarCancion(nombre)
-        salida="Nombre: "+datos.nombre+"\n"
-        salida+="Artista: "+datos.artista+"\n"
-        salida+="Album: "+datos.album+"\n"
+        datos = lista_canciones.buscar_por_nombre(nombre)
+        if datos is not None:
+            salida = "Nombre: " + datos.nombre + "\n"
+            salida += "Artista: " + datos.artista + "\n"
+            salida += "Album: " + datos.album + "\n"
+        else:
+            salida = "La canción no se encontró"
         return salida
 
 
@@ -222,9 +225,13 @@ def menuSecundario():
     btnArchivo = tk.Button(frameDeArriba, text="Abrir Archivo",font="arial", command=open_file_dialog)
     btnArchivo.grid(column=0,row=0,padx=5,pady=5)
     
+    def verLasPlayList():
+        txtVerPlaylist.delete('1.0', tk.END)
+        txtVerPlaylist.insert(tk.END, (str(ver_playlist())))
+    
     # boton para ver Playlist
-    btnArchivo = tk.Button(frameDeArriba, text="Ver Playlists",font="arial", command="")
-    btnArchivo.grid(column=1,row=0,padx=5,pady=5)
+    btnVerPlaylist = tk.Button(frameDeArriba, text="Ver Playlists",font="arial", command=verLasPlayList)
+    btnVerPlaylist.grid(column=1,row=0,padx=5,pady=5)
     
     #frame de abajo, contiene las imagnes y los botones
     frameReproductor = tk.Frame(menu, width=700, height=100, bg="lightgrey")
@@ -234,36 +241,59 @@ def menuSecundario():
     labelNombreLista.grid(column=3,row=0,padx=5,pady=5)
     
     #textbox para buscar
-    txtBarra = tk.Text(frameReproductor, width=40, height=2)
-    txtBarra.grid(column=4,row=0,padx=5,pady=5) 
+    txtNombrePlaylist = tk.Text(frameReproductor, width=40, height=2)
+    txtNombrePlaylist.grid(column=4,row=0,padx=5,pady=5) 
     
     #textbox para informacion
-    txtBuscar = tk.Text(frameReproductor, width=80, height=5)
-    txtBuscar.grid(column=0,columnspan=5,row=1,rowspan=3,padx=10,pady=10)
+    txtVerPlaylist = tk.Text(frameReproductor, width=80, height=5)
+    txtVerPlaylist.grid(column=0,columnspan=5,row=1,rowspan=3,padx=10,pady=10)
+    
+    def crearPlaylist():
+        crear_playlist(str(txtNombrePlaylist.get("1.0", "end-1c")))
+        txtNombrePlaylist.delete('1.0', tk.END)
     
     #crea el boton de adelante
-    btnCrar = tk.Button(frameReproductor,text="Crear playlist",font="arial")
-    btnCrar.grid(column=4,row=4,padx=2,pady=2)
+    btnCrarLista = tk.Button(frameReproductor,text="Crear playlist",font="arial",command=crearPlaylist)
+    btnCrarLista.grid(column=4,row=4,padx=2,pady=2)
     
     #frame de abajo, contiene las imagnes y los botones
     frameMegusta = tk.Frame(menu, width=700, height=100, bg="lightgrey")
     frameMegusta.grid(column=0,row=2,padx=10,pady=5)
     
     #textbox para buscar
-    txtBarra = tk.Text(frameMegusta, width=40, height=2)
-    txtBarra.grid(column=4,row=0,padx=5,pady=5)
-
+    txtNombreCancion = tk.Text(frameMegusta, width=40, height=2)
+    txtNombreCancion.grid(column=4,row=0,padx=5,pady=5)
+    
+    def buscarPorCancion():
+        txtInformacionDeLaCancionCreada.delete('1.0', tk.END)
+        txtInformacionDeLaCancionCreada.insert(tk.END, (formatoBuscarCancion(str(txtNombreCancion.get("1.0", "end-1c")))))
+        
+    def formatoBuscarCancion(nombre):
+        datos = lista_canciones.buscar_por_nombre(nombre)
+        if datos is not None:
+            salida = "Nombre: " + datos.nombre + "\n"
+            salida += "Artista: " + datos.artista + "\n"
+            salida += "Album: " + datos.album + "\n"
+        else:
+            salida = "La canción no se encontró"
+        return salida
+          
     #boton para generar el buscar
-    btnBuscar = tk.Button(frameMegusta, text="Buscar Cancion", font="Arial")
-    btnBuscar.grid(column=3, row=0, padx=5, pady=5) 
+    btnBuscarCancion = tk.Button(frameMegusta, text="Buscar Cancion", font="Arial",command=buscarPorCancion)
+    btnBuscarCancion.grid(column=3, row=0, padx=5, pady=5) 
     
     #textbox para informacion
-    txtBuscar = tk.Text(frameMegusta, width=80, height=5)
-    txtBuscar.grid(column=0,columnspan=5,row=1,rowspan=3,padx=10,pady=10)
+    txtInformacionDeLaCancionCreada = tk.Text(frameMegusta, width=80, height=5)
+    txtInformacionDeLaCancionCreada.grid(column=0,columnspan=5,row=1,rowspan=3,padx=10,pady=10)
+    
+    def agregarCancionPlaylist():
+        agregar_cancion_playlist(str(txtNombrePlaylist.get("1.0", "end-1c")), str(txtNombreCancion.get("1.0", "end-1c")))
+        txtNombreCancion.delete('1.0', tk.END)
+        txtInformacionDeLaCancionCreada.delete('1.0', tk.END)
     
     #crea el boton de adelante
-    btnAgregar = tk.Button(frameMegusta,text="Agregar Cancion",font="arial")
-    btnAgregar.grid(column=4,row=5,padx=2,pady=2)
+    btnAgregarCancion = tk.Button(frameMegusta,text="Agregar Cancion",font="arial",command=agregarCancionPlaylist)
+    btnAgregarCancion.grid(column=4,row=5,padx=2,pady=2)
     
     menu.mainloop()
     
