@@ -240,8 +240,8 @@ def menuSecundario():
     
     menu.mainloop()
        
-#menuPrincipal()
+menuPrincipal()
 
-menuSecundario()
+#menuSecundario()
 
 
