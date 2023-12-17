@@ -38,7 +38,7 @@
     <cancion nombre = "Solo a terceros">
         <artista>PXNDX</artista>
         <album>Poetics</album>
-        <imagen>Albunes\Solo a terceros.jpg</imagen>
+        <imagen>Albunes\Solo a terceros1234.jpg</imagen>
         <ruta>Albunes\Solo a terceros.mp3</ruta>
     </cancion>    
 </biblioteca>

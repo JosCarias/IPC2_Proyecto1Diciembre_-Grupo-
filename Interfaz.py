@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk
 from LecturaXml import *
+import os
+from reporte import *
 
 def menuPrincipal():
     # Crear la menu principal
@@ -22,7 +24,7 @@ def menuPrincipal():
     btnArchivo.grid(column=0,row=0,padx=5,pady=5)
 
     #boton para generar el reporte 
-    btnReporte = tk.Button(frame, text="Reporte",font="arial", command="LLamar a la funcion reporte")
+    btnReporte = tk.Button(frame, text="Reporte",font="arial", command=reporte_HTML)
     btnReporte.grid(column=1,row=0,padx=5,pady=5)
 
     #textbox para buscar
@@ -54,7 +56,7 @@ def menuPrincipal():
 
     #frame de abajo, contiene las imagnes y los botones
     frameReproductor = tk.Frame(menu, width=800, height=100, bg="lightgrey")
-    frameReproductor.grid(column=0,row=1,padx=10)
+    frameReproductor.grid(column=0,row=1,padx=10) 
 
     #carga la ruta de la imagen 
     albunImagen = 'Imgenes\defaulAlbumPequeño.png'
@@ -64,6 +66,26 @@ def menuPrincipal():
     #es la imagen del album
     label = tk.Label(frameReproductor, image=Album, height=250,width=250)
     label.grid(column=0,rowspan=5,row=0,padx=10,pady=10)
+    
+    def cargar_imagen(ruta):
+        img = None  # Inicializa img con un valor predeterminado
+        if os.path.exists(ruta):
+            img = Image.open(ruta)
+        else:
+            print("La imagen no se encontró. Cargando imagen por defecto...")
+            ruta_por_defecto = os.path.join('Imgenes', 'Imgenes\default.png')
+            if os.path.exists(ruta_por_defecto):
+                img = Image.open(ruta_por_defecto)
+            else:
+                print("La imagen por defecto no se encontró.")
+
+        if img is not None:
+            Album = ImageTk.PhotoImage(img)
+            label.config(image=Album)
+            label.image = Album  # Actualizar la referencia para evitar que la imagen sea eliminada por el recolector de basura
+        else:
+            # Manejar el caso en el que no se ha podido cargar ninguna imagen
+            print("No se pudo cargar ninguna imagen.") 
 
     #carga la ruta de la imagen de play
     playImagen = 'Imgenes\playPequeño.png'
@@ -78,6 +100,8 @@ def menuPrincipal():
         salida+="Album: "+dato.album+"\n"
         txtBuscar.delete('1.0', tk.END)
         txtBuscar.insert(tk.END, (str(salida)))
+        print(dato.ruta+"--------")
+        cargar_imagen((dato.imagen))
         
 
     #crea el boton de play
@@ -115,6 +139,7 @@ def menuPrincipal():
     def atrasarCancion():
         txtBuscar.delete('1.0', tk.END)
         txtBuscar.insert(tk.END, (str(formatoAtrasar())))
+        
 
     #funcion encargada de dar formato a la informacion de salida      
     def formatoAtrasar():
@@ -122,6 +147,7 @@ def menuPrincipal():
         salida="Nombre: "+datos.nombre+"\n"
         salida+="Artista: "+datos.artista+"\n"
         salida+="Album: "+datos.album+"\n"
+        cargar_imagen((datos.imagen))
         return salida    
 
     #crea el boton de atras
@@ -160,6 +186,7 @@ def menuPrincipal():
         salida="Nombre: "+datos.nombre+"\n"
         salida+="Artista: "+datos.artista+"\n"
         salida+="Album: "+datos.album+"\n"
+        cargar_imagen((datos.imagen))
         return salida
 
     #crea el boton de adelante
@@ -239,6 +266,8 @@ def menuSecundario():
     btnAgregar.grid(column=4,row=5,padx=2,pady=2)
     
     menu.mainloop()
+    
+
        
 menuPrincipal()
 
