@@ -1,0 +1,46 @@
+// Canciones
+digraph {
+	TITULO [label=Biblioteca]
+	0 [label="Cartoon  Made Me Feel ft Kristel Aaslaid Champion Remix"]
+	1 [label="Cartoon  On  On feat Daniel Levi NCS Release"]
+	2 [label="Enemy from the series Arcane League of Legends"]
+	3 [label=Graveyar]
+	4 [label="You should be sad"]
+	5 [label="New Americana"]
+	6 [label="Solo a terceros"]
+	0 -> 1
+	1 -> 2
+	2 -> 3
+	3 -> 4
+	4 -> 5
+	5 -> 6
+	7 [label=Sencillo]
+	8 [label=Sencillo]
+	9 [label=Sencillo]
+	10 [label=Manic]
+	11 [label=Manic]
+	12 [label=Badlands]
+	13 [label=Poetics]
+	7 -> 8
+	8 -> 9
+	9 -> 10
+	10 -> 11
+	11 -> 12
+	12 -> 13
+	14 [label=Cartoon]
+	15 [label=Cartoon]
+	16 [label="Imagine Dragons"]
+	17 [label=Healsy]
+	18 [label=Healsy]
+	19 [label=Healsy]
+	20 [label=PXNDX]
+	14 -> 15
+	15 -> 16
+	16 -> 17
+	17 -> 18
+	18 -> 19
+	19 -> 20
+	TITULO -> 0
+	TITULO -> 7
+	TITULO -> 14
+}

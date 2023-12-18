@@ -178,5 +178,6 @@ def escribirXML():
     tree.write("listasReproduccion.xml")
 
 if __name__ == "__main__":
-    leer_xml = Lectura_xml("Entrada.xml")
+    leer_xml = Lectura_xml("Entrada.xml")   
+    #ImprimirCanciones()
     

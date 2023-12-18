@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 from LecturaXml import *
 import os
 from reporte import *
+from Graficas import hacerGrafo
 
 def menuPrincipal():
     # Crear la menu principal
@@ -22,9 +23,14 @@ def menuPrincipal():
     # boton para cargar el archivo 
     btnArchivo = tk.Button(frame, text="Archivo",font="arial", command=menuSecundario)
     btnArchivo.grid(column=0,row=0,padx=5,pady=5)
+    
+    def hacerReporte():
+        reporte_HTML()
+        hacerGrafo()
+        escribirXML()
 
     #boton para generar el reporte 
-    btnReporte = tk.Button(frame, text="Reporte",font="arial", command=reporte_HTML)
+    btnReporte = tk.Button(frame, text="Reporte",font="arial", command=hacerReporte)
     btnReporte.grid(column=1,row=0,padx=5,pady=5)
 
     #textbox para buscar
@@ -218,7 +224,7 @@ def menuSecundario():
 
         if archivo:
             ruta=archivo.name 
-            Lectura_xml(ruta)
+            Lectura_xml("Entrada.xml")
             lista_canciones.recorrer()
     
     # boton para cargar el archivo 
