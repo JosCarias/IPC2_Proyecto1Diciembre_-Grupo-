@@ -42,6 +42,8 @@ def Principal():
         elif opcion == 11:
             reporte_HTML()
         elif opcion == 12:
+            escribirXML()
+        elif opcion == 13:
             print("A salido del menú")
             break  
         Menu()    

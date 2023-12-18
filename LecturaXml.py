@@ -57,7 +57,8 @@ def Menu():
           +"\n\t9. ver una lista segun posicion"
           +"\n\t10. ver una cancion en una lista segun posicion"
           +"\n\t11. reporte de HTML"
-          +"\n\t12. Salir")
+          +"\n\t12. Generar XML"
+          +"\n\t13. Salir")
 
 def ImprimirCanciones():
     lista_canciones.recorrer() #Imprime la lista enlazada
@@ -141,6 +142,40 @@ def cancionPorPosicionEnLista(indiceLista, indiceCancion):
 def ver_Nombe_Lista_Posicion(indice):
     nombre = lista_playlists.BuscarPorIndice(indice).nombre
     return nombre
+
+#Escribe el XML
+def escribirXML():
+    global lista_playlists
+    root = ET.Element("ListasReproduccion")
+
+    actual = lista_playlists.primero
+    while actual:
+        lista = ET.SubElement(root, 'lista', attrib={"nombre": str(actual.node.nombre)})
+
+        aux = actual.node.canciones.primero
+        while aux:
+            cancion = ET.SubElement(lista, 'cancion', attrib={"nombre": str(aux.node.nombre)})
+            artista = ET.SubElement(cancion, 'artista')
+            artista.text = aux.node.artista
+            album = ET.SubElement(cancion, 'album')
+            album.text = aux.node.album
+            veces = ET.SubElement(cancion, 'vecesReproducida')
+            veces.text = aux.node.CantidadReproducciones
+            imagen = ET.SubElement(cancion, 'imagen')
+            imagen.text = aux.node.imagen
+            ruta = ET.SubElement(cancion, 'ruta')
+            ruta.text = aux.node.ruta
+
+            aux = aux.siguiente
+            if aux == actual.node.canciones.primero:
+                break
+            
+        actual = actual.siguiente
+        if actual == lista_playlists.primero:
+            break
+
+    tree = ET.ElementTree(root)
+    tree.write("listasReproduccion.xml")
 
 if __name__ == "__main__":
     leer_xml = Lectura_xml("Entrada.xml")
