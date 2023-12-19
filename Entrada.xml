@@ -14,13 +14,13 @@
     <cancion nombre = "Enemy from the series Arcane League of Legends">
         <artista>Imagine Dragons</artista>
         <album>Sencillo</album>
-        <imagen>Albunes\Enemy from the series Arcane League of Legends.jpg</imagen>
+        <imagen>Albunes\Enemy from the series Arcane League of Legends123.jpg</imagen>
         <ruta>Albunes\Enemy from the series Arcane League of Legends.mp3</ruta>
     </cancion>
     <cancion nombre = "Graveyar">
         <artista>Healsy</artista>
         <album>Manic</album>
-        <imagen>Albunes\Halsey Graveyard.png</imagen>
+        <imagen>Albunes\Halsey Graveyard123.png</imagen>
         <ruta>Albunes\Halsey Graveyard.mp3</ruta>
     </cancion>
     <cancion nombre = "You should be sad">
